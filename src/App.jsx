@@ -5,7 +5,7 @@ import axios from "axios";
 function App() {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
-  const [err, setErr] = useState({});
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
     async function getData() {
@@ -28,8 +28,28 @@ function App() {
     return <h1>ERROR</h1>
   }
 
+  if (loading) {
+    return <h1>LOADING...</h1>
+  }
+
   return <>
-  {loading ? (<h1>loading...</h1>) : (<h1>{data[0].title}</h1>)}
+      <div className="todos-container">
+        {data.map((todo) => (
+          <div className="card" key={todo.id}>
+            <h3>{todo.title}</h3>
+            <p>
+              Status:
+              <span
+                className={
+                  todo.completed ? "status-completed" : "status-pending"
+                }
+              >
+                {todo.completed ? "Completed" : "Pending"}
+              </span>
+            </p>
+          </div>
+        ))}
+      </div>
   </>;
 }
 
