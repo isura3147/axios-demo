@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import api from "./service/api";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -11,7 +12,7 @@ function App() {
     async function getData() {
       try {
         setLoading(true);
-        let res = await axios.get("https://jsonplaceholder.typicode.com/todos");
+        let res = await api.get("/todos");
         setData(res.data);
         console.log(res);
       } catch (err) {
