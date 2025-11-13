@@ -14,6 +14,7 @@ function App() {
         setData(res.data);
         console.log(res);
       } catch (err) {
+        //
       } finally {
         setLoading(false);
       }
@@ -22,12 +23,8 @@ function App() {
     getData();
   }, []);
 
-  if (loading) {
-    return <h1>loading...</h1>
-  }
-
   return <>
-    <h1>{data[0].title}</h1>
+  {loading ? (<h1>loading...</h1>) : (<h1>{data[0].title}</h1>)}
   </>;
 }
 
