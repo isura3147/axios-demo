@@ -26,14 +26,15 @@ function App() {
   }, []);
 
   if (err) {
-    return <h1>ERROR</h1>
+    return <h1>ERROR</h1>;
   }
 
   if (loading) {
-    return <h1>LOADING...</h1>
+    return <h1>LOADING...</h1>;
   }
 
-  return <>
+  return (
+    <>
       <div className="todos-container">
         {data.map((todo) => (
           <div className="card" key={todo.id}>
@@ -51,7 +52,8 @@ function App() {
           </div>
         ))}
       </div>
-  </>;
+    </>
+  );
 }
 
 export default App;
